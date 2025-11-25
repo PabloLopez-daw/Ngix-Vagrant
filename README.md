@@ -94,3 +94,16 @@ end
 
 ## 12 Hacemos un ping a pablo.test y comprovamos que vaya bien
 
+## 13 Para usar el DNS Publico nip.io debemos hacer lo siguiente 
+```
+    sudo nano /etc/nginx/sites-available/pablo.test
+```
+
+```
+    server_name 192-168-56-101.pablo.test.nip.io;
+```
+
+```
+    sudo systemctl restart nginx
+```
+
