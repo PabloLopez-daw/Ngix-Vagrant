@@ -56,3 +56,33 @@ end
     sudo chmod -R 755 /var/www/pablo.test
 ```
 ## 8 Abrimos nuestra ip de la maquina en el ordenador local y se tendria que ver el Welcome to nginx!
+
+## 9 Ahora creamos un bloque en el servidor llamado pablo.test y le ponemos el siguiente contenido
+```
+    sudo nano /etc/nginx/sites-available/pablo.test
+```
+```
+    server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/pablo.test/html/static-website-example;
+    index index.html;
+
+    server_name pablo.test;
+
+        location / {
+            try_files $uri $uri/ =404;
+        }
+    }
+
+```
+
+## 10 Activamos y reiniciamos el sitio web
+
+```
+    sudo ln -s /etc/nginx/sites-available/pablo.test /etc/nginx/sites-enabled/
+    sudo systemctl restart nginx
+```
+
+
