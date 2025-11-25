@@ -34,4 +34,5 @@ end
     apt install git -y
 ```
 
+## 3 Hacemos un vagrant Up y levantamos la maquina y hacemos un vagrant ssh
 
