@@ -91,3 +91,6 @@ end
 
     192.168.56.101 pablo.test
 ```
+
+## 12 Hacemos un ping a pablo.test y comprovamos que vaya bien
+
