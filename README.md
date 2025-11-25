@@ -85,4 +85,9 @@ end
     sudo systemctl restart nginx
 ```
 
+## 11 Configuramos el /etc/hosts
+```
+    nano /etc/hosts
 
+    192.168.56.101 pablo.test
+```
