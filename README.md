@@ -21,3 +21,17 @@ Practica de Ngix de Vagrant
 end
 ```
 
+## 2 Creamos el provision.sh y lo que hacemos es actualizar la maquina y instalar el git y Ngix
+
+```
+    echo "==> Actualizando repositorios"
+    apt update -y
+
+    echo "==> Instalando Nginx"
+    apt install nginx -y
+
+    echo "==> Instalando Git"
+    apt install git -y
+```
+
+
