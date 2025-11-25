@@ -36,3 +36,12 @@ end
 
 ## 3 Hacemos un vagrant Up y levantamos la maquina y hacemos un vagrant ssh
 
+## 4 Miramos el estado del Ngix
+
+## 5 Creamos en la maquina un archivo en mi caso llamado Pablo.test y nos me temos en el 
+
+```
+    sudo mkdir -p /var/www/paco.test/html
+    cd /var/www/paco.test/html
+```
+
