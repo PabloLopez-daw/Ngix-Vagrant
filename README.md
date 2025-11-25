@@ -1,10 +1,14 @@
-# Ngix-Vagrant
-Practica de Ngix de Vagrant
+# 🌐 Nginx + Vagrant --- Práctica Completa
 
-## 1 Creamos el VagrantFile y le añadimos lo siguiente 
+Práctica de instalación y configuración de un servidor web **Nginx**
+dentro de una máquina virtual gestionada con **Vagrant**.
 
-```
-    Vagrant.configure("2") do |config|
+------------------------------------------------------------------------
+
+## 📁 1. Crear el archivo `Vagrantfile`
+
+``` ruby
+Vagrant.configure("2") do |config|
 
   # --- Sistema operativo ---
   config.vm.box = "debian/bullseye64"
@@ -21,48 +25,90 @@ Practica de Ngix de Vagrant
 end
 ```
 
-## 2 Creamos el provision.sh y lo que hacemos es actualizar la maquina y instalar el git y Ngix
+------------------------------------------------------------------------
 
-```
-    echo "==> Actualizando repositorios"
-    apt update -y
+## ⚙️ 2. Crear el script `provision.sh`
 
-    echo "==> Instalando Nginx"
-    apt install nginx -y
+Este script actualiza el sistema e instala Nginx y Git.
 
-    echo "==> Instalando Git"
-    apt install git -y
-```
+``` bash
+echo "==> Actualizando repositorios"
+apt update -y
 
-## 3 Hacemos un vagrant Up y levantamos la maquina y hacemos un vagrant ssh
+echo "==> Instalando Nginx"
+apt install nginx -y
 
-## 4 Miramos el estado del Ngix
-
-## 5 Creamos en la maquina un archivo en mi caso llamado Pablo.test y nos me temos en el 
-
-```
-    sudo mkdir -p /var/www/pablo.test/html
-    cd /var/www/pablo.test/html
-```
-## 6 Clonamos el repositorio de github de cloudacademy
-```
-    git clone https://github.com/cloudacademy/static-website-example
+echo "==> Instalando Git"
+apt install git -y
 ```
 
+------------------------------------------------------------------------
 
-## 7 Le damos los siguientes permisos a pablo.test
-```
-    sudo chown -R www-data:www-data /var/www/pablo.test
-    sudo chmod -R 755 /var/www/pablo.test
-```
-## 8 Abrimos nuestra ip de la maquina en el ordenador local y se tendria que ver el Welcome to nginx!
+## 🚀 3. Levantar la máquina Vagrant
 
-## 9 Ahora creamos un bloque en el servidor llamado pablo.test y le ponemos el siguiente contenido
+``` bash
+vagrant up
+vagrant ssh
 ```
-    sudo nano /etc/nginx/sites-available/pablo.test
+
+------------------------------------------------------------------------
+
+## 🔍 4. Comprobar el estado de Nginx
+
+``` bash
+systemctl status nginx
 ```
+
+Debe mostrarse como **active (running)**.
+
+------------------------------------------------------------------------
+
+## 📂 5. Crear el directorio del sitio web
+
+``` bash
+sudo mkdir -p /var/www/pablo.test/html
+cd /var/www/pablo.test/html
 ```
-    server {
+
+------------------------------------------------------------------------
+
+## 🌐 6. Clonar el repositorio web
+
+``` bash
+git clone https://github.com/cloudacademy/static-website-example
+```
+
+------------------------------------------------------------------------
+
+## 🔐 7. Ajustar permisos
+
+``` bash
+sudo chown -R www-data:www-data /var/www/pablo.test
+sudo chmod -R 755 /var/www/pablo.test
+```
+
+------------------------------------------------------------------------
+
+## 🖥️ 8. Probar Nginx con la IP
+
+Abrir en el navegador:
+
+    http://192.168.56.101
+
+Debe aparecer **Welcome to Nginx!**
+
+------------------------------------------------------------------------
+
+## 🛠️ 9. Crear el bloque de servidor `pablo.test`
+
+``` bash
+sudo nano /etc/nginx/sites-available/pablo.test
+```
+
+Contenido:
+
+``` nginx
+server {
     listen 80;
     listen [::]:80;
 
@@ -71,39 +117,57 @@ end
 
     server_name pablo.test;
 
-        location / {
-            try_files $uri $uri/ =404;
-        }
+    location / {
+        try_files $uri $uri/ =404;
     }
-
+}
 ```
 
-## 10 Activamos y reiniciamos el sitio web
+------------------------------------------------------------------------
 
-```
-    sudo ln -s /etc/nginx/sites-available/pablo.test /etc/nginx/sites-enabled/
-    sudo systemctl restart nginx
+## 🔗 10. Habilitar el sitio web y reiniciar Nginx
+
+``` bash
+sudo ln -s /etc/nginx/sites-available/pablo.test /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
 ```
 
-## 11 Configuramos el /etc/hosts
-```
-    nano /etc/hosts
+------------------------------------------------------------------------
+
+## 🧩 11. Configurar el archivo `hosts`
+
+En el equipo host:
 
     192.168.56.101 pablo.test
+
+------------------------------------------------------------------------
+
+## 📡 12. Probar resolución
+
+``` bash
+ping pablo.test
 ```
 
-## 12 Hacemos un ping a pablo.test y comprovamos que vaya bien
+------------------------------------------------------------------------
 
-## 13 Para usar el DNS Publico nip.io debemos hacer lo siguiente 
-```
-    sudo nano /etc/nginx/sites-available/pablo.test
+## 🌍 13. Usar DNS público nip.io
+
+Editar:
+
+``` bash
+sudo nano /etc/nginx/sites-available/pablo.test
 ```
 
-```
+Añadir:
+
     server_name 192-168-56-101.pablo.test.nip.io;
+
+Reiniciar:
+
+``` bash
+sudo systemctl restart nginx
 ```
 
-```
-    sudo systemctl restart nginx
-```
+Acceder desde el navegador:
 
+    http://192-168-56-101.pablo.test.nip.io
