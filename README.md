@@ -50,3 +50,9 @@ end
 ```
 
 
+## 7 Le damos los siguientes permisos a pablo.test
+```
+    sudo chown -R www-data:www-data /var/www/pablo.test
+    sudo chmod -R 755 /var/www/pablo.test
+```
+## 8 Abrimos nuestra ip de la maquina en el ordenador local y se tendria que ver el Welcome to nginx!
