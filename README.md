@@ -41,7 +41,12 @@ end
 ## 5 Creamos en la maquina un archivo en mi caso llamado Pablo.test y nos me temos en el 
 
 ```
-    sudo mkdir -p /var/www/paco.test/html
-    cd /var/www/paco.test/html
+    sudo mkdir -p /var/www/pablo.test/html
+    cd /var/www/pablo.test/html
 ```
+## 6 Clonamos el repositorio de github de cloudacademy
+```
+    git clone https://github.com/cloudacademy/static-website-example
+```
+
 
