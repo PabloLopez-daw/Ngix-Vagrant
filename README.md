@@ -276,20 +276,11 @@ server {
     server_name 192-168-56-101.pablo.test.nip.io;
 
     location / {
-        try_files $uri $uri/ =404;
-    }
-
-    location = /contact.html {
-        auth_basic "Área privada - Contact";
-        auth_basic_user_file /etc/nginx/.htpasswd;
-    }
-    location /api {
-        satisfy all;
-        allow 192.168.56.0/24;    # ejemplo: permitir rango
+        deny 192.168.56.101;
+        allow 192.168.56.0/24;
         deny all;
 
-        auth_basic "API privada";
-        auth_basic_user_file /etc/nginx/.htpasswd;
+        try_files $uri $uri/ =404;
     }
 }
 ```
