@@ -285,3 +285,8 @@ server {
 }
 ```
 
+## 12. Ahora hago un curl desde la maquina principal y me tiene que dar el error 403
+```bash
+    curl -u pablo:"MiPass123" -I http://192-168-56-101.pablo.test.nip.io
+```
+
