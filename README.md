@@ -255,3 +255,12 @@ server {
         auth_basic_user_file /etc/nginx/.htpasswd;
     }
 }
+```
+
+
+## 10. Reiniciamos el servidor y comprobramos que va correctamente y que te pide un usuario y contraseña en contact.html
+```bash
+    sudo nginx -t
+    sudo systemctl restart nginx
+```
+
