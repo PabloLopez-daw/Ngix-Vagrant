@@ -264,3 +264,33 @@ server {
     sudo systemctl restart nginx
 ```
 
+## 11. Para aplicar la restriccion de IP en el blocke pablo.test tenemos que cambiar lo siguiente
+```bash
+    server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/pablo.test/static-website-example;
+    index index.html;
+
+    server_name 192-168-56-101.pablo.test.nip.io;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location = /contact.html {
+        auth_basic "Área privada - Contact";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+    location /api {
+    satisfy all;
+    allow 192.168.56.0/24;    # ejemplo: permitir rango
+    deny all;
+
+    auth_basic "API privada";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}
+```
+
