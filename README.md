@@ -290,8 +290,34 @@ server {
     curl -u pablo:"MiPass123" -I http://192-168-56-101.pablo.test.nip.io
 ```
 
-## 13. Ahora para combinar la autentificacion de ip y de usuario tienes que poner lo siguiente , lo que queremos esq no te deje si uno de las 2 restricciones falle, primero lo haremos fallar
+## 13. Ahora para combinar la autentificacion de ip y de usuario tienes que poner lo siguiente , lo que queremos esq no te deje si uno de las 2 restricciones falle, primero lo haremos fallar, comprobamos con el curl
 
+```bash
+server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/pablo.test/static-website-example;
+    index index.html;
+
+    server_name 192-168-56-101.pablo.test.nip.io;
+
+    location / {
+        satisfy all;
+        allow 192.168.56.101;
+        allow 192.168.56.0/24;
+        deny all
+
+        auth_basic "Administrator's Area";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+
+## 14. Ahora hacemos que vaya bien , comprobamos con el curl
 ```bash
 server {
     listen 80;
@@ -315,5 +341,3 @@ server {
     }
 }
 ```
-
-
