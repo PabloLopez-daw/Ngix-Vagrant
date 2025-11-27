@@ -217,3 +217,15 @@ Acceder desde el navegador:
         try_files $uri $uri/ =404;
     }
 ``` 
+
+## 6. Reiniciamos el servidor y comprobramos que va correctamente y que te pide un usuario y contra seña
+```bash
+    sudo nginx -t
+    sudo systemctl restart nginx
+```
+
+## 7. Compreobamos con el curl , si haces el curl sin usuario y contraseña te debe salir error 401
+```bash
+    curl -I http://192-168-56-101.pablo.test.nip.io
+    curl -u pablo:MyPass123 -I http://192-168-56-101.pablo.test.nip.io
+```
