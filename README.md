@@ -284,12 +284,12 @@ server {
         auth_basic_user_file /etc/nginx/.htpasswd;
     }
     location /api {
-    satisfy all;
-    allow 192.168.56.0/24;    # ejemplo: permitir rango
-    deny all;
+        satisfy all;
+        allow 192.168.56.0/24;    # ejemplo: permitir rango
+        deny all;
 
-    auth_basic "API privada";
-    auth_basic_user_file /etc/nginx/.htpasswd;
+        auth_basic "API privada";
+        auth_basic_user_file /etc/nginx/.htpasswd;
     }
 }
 ```
