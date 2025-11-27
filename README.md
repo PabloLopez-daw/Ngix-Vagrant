@@ -186,3 +186,14 @@ Acceder desde el navegador:
 ```bash
      sudo touch /etc/nginx/.htpasswd
 ```
+
+## 3. Creamos los usuarios con sus contraseñas con los siguientes comandos
+```bash
+    sudo sh -c "echo -n 'pablo:' >> /etc/nginx/.htpasswd"
+    sudo sh -c "openssl passwd -apr1 'MiPass123' >> /etc/nginx/.htpasswd"
+```
+
+```bash
+    sudo sh -c "echo -n 'apellido:' >> /etc/nginx/.htpasswd"
+    sudo sh -c "openssl passwd -apr1 'MiPass123' >> /etc/nginx/.htpasswd"
+``` 
