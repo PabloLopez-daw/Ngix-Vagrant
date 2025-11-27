@@ -234,3 +234,24 @@ Acceder desde el navegador:
     sudo tail -n 50 /var/log/nginx/error.log
     sudo tail -n 50 /var/log/nginx/access.log
 ```
+
+## 9. Para aplicar la restriccion de usurio y contraseña en el blocke pablo.test tenemos que cambiar lo siguiente
+```bash
+server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/pablo.test/static-website-example;
+    index index.html;
+
+    server_name 192-168-56-101.pablo.test.nip.io;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location = /contact.html {
+        auth_basic "Área privada - Contact";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}
