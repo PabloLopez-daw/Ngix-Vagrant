@@ -203,3 +203,17 @@ Acceder desde el navegador:
 ```bash
     sudo cat /etc/nginx/.htpasswd
 ```
+
+## 5. Editamos el server block pablo.test y le añadimos lo siguiente debajo de server_name
+
+```bash
+    sudo nano /etc/nginx/sites-available/pablo.test
+```
+
+```bash
+    location / {
+        auth_basic "Área restringida";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+        try_files $uri $uri/ =404;
+    }
+``` 
