@@ -229,3 +229,8 @@ Acceder desde el navegador:
     curl -I http://192-168-56-101.pablo.test.nip.io
     curl -u pablo:MyPass123 -I http://192-168-56-101.pablo.test.nip.io
 ```
+## 8. Revisamos los log con el tail
+```bash
+    sudo tail -n 50 /var/log/nginx/error.log
+    sudo tail -n 50 /var/log/nginx/access.log
+```
