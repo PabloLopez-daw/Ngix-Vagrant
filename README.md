@@ -182,3 +182,7 @@ Acceder desde el navegador:
     curl -I http://pablo.test
 ```
 
+## 2. Creamos el fichero .htpasswd
+```bash
+     sudo touch /etc/nginx/.htpasswd
+```
