@@ -5,6 +5,8 @@ dentro de una máquina virtual gestionada con **Vagrant**.
 
 ------------------------------------------------------------------------
 
+# 1. Instalat y configurar Nginx 
+
 ## 📁 1. Crear el archivo `Vagrantfile`
 
 ``` ruby
@@ -171,3 +173,12 @@ sudo systemctl restart nginx
 Acceder desde el navegador:
 
     http://192-168-56-101.pablo.test.nip.io
+
+# 2. Autentificacion del servidor
+
+## 1.Comprobacion si el servidor va correctamente 
+```bash
+    curl -I http://192.168.56.101
+    curl -I http://pablo.test
+```
+
