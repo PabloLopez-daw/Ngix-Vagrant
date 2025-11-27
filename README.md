@@ -197,3 +197,9 @@ Acceder desde el navegador:
     sudo sh -c "echo -n 'apellido:' >> /etc/nginx/.htpasswd"
     sudo sh -c "openssl passwd -apr1 'MiPass123' >> /etc/nginx/.htpasswd"
 ``` 
+
+## 4. Comprobamos con un cat al archivo de que se ha creado correctamente
+
+```bash
+    sudo cat /etc/nginx/.htpasswd
+```
