@@ -365,3 +365,37 @@ server {
     sudo nano /etc/nginx/sites-available/pablo.test
 ```
 
+Contenido:
+
+```nginx
+server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/pablo.test/static-website-example;
+    index index.html;
+
+    server_name 192-168-56-101.pablo.test.nip.io;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    root /var/www/pablo.test/static-website-example;
+    index index.html;
+
+    server_name 192-168-56-101.pablo.test.nip.io;
+
+    ssl_certificate /etc/ssl/certs/pablo.test.crt;
+    ssl_certificate_key /etc/ssl/private/pablo.test.key;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
