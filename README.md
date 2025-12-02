@@ -372,7 +372,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    root /var/www/pablo.test/static-website-example;
+    root /var/www/pablo.test/html/static-website-example;
     index index.html;
 
     server_name 192-168-56-101.pablo.test.nip.io;
@@ -386,7 +386,7 @@ server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-    root /var/www/pablo.test/static-website-example;
+    root /var/www/pablo.test/html/static-website-example;
     index index.html;
 
     server_name 192-168-56-101.pablo.test.nip.io;
@@ -408,5 +408,12 @@ server {
 ## 5. Comprobar que todo funciona debe poner que no hacepta certificados
 ```bash
     curl -I https://192-168-56-101.pablo.test.nip.io
+```
+
+## 6. Comprobamos en la web de que esta todo bien
+
+
+```
+    https://192-168-56-101.pablo.test.nip.io/
 ```
 
