@@ -350,4 +350,5 @@ server {
     sudo ufw allow ssh
     sudo ufw allow 'Nginx Full'
     sudo ufw delete allow 'HTTP'
+    sudo ufw --force enable
 ```
