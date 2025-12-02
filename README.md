@@ -405,4 +405,8 @@ server {
     sudo systemctl restart nginx
 ```
 
+## 5. Comprobar que todo funciona debe poner que no hacepta certificados
+```bash
+    curl -I https://192-168-56-101.pablo.test.nip.io
+```
 
