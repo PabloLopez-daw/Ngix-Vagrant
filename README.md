@@ -341,3 +341,13 @@ server {
     }
 }
 ```
+
+# 3. Acceso seguro con SSL/TSL NGINX
+
+## 1. Primero configuramos el cortafuegos UFW
+```bash
+    sudo apt install ufw
+    sudo ufw allow ssh
+    sudo ufw allow 'Nginx Full'
+    sudo ufw delete allow 'HTTP'
+```
