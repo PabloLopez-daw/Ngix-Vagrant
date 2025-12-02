@@ -352,3 +352,10 @@ server {
     sudo ufw delete allow 'HTTP'
     sudo ufw --force enable
 ```
+
+## 2. Generar certificado SSL/TSL
+```bash
+    sudo openssl req -x509 -nodes -days 365 \
+    -newkey rsa:2048 -keyout /etc/ssl/private/pablo.test.key \
+    -out /etc/ssl/certs/pablo.test.crt
+```
