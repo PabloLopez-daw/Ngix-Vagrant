@@ -399,3 +399,10 @@ server {
     }
 }
 ```
+
+## 4. Reiniciar Nginx
+```bash
+    sudo systemctl restart nginx
+```
+
+
