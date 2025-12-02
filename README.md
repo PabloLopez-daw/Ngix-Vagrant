@@ -359,3 +359,9 @@ server {
     -newkey rsa:2048 -keyout /etc/ssl/private/pablo.test.key \
     -out /etc/ssl/certs/pablo.test.crt
 ```
+
+## 3. Configurar el sitio web para usar SSL/TSL
+```bash
+    sudo nano /etc/nginx/sites-available/pablo.test
+```
+
